@@ -46,6 +46,7 @@ subject_IDs = subject_IDs.tolist()
 
 # Create a folder for each subject
 for s, fname in zip(subject_IDs, Reader.fetch_filenames(subject_IDs, files[0])):
+    os.chdir(data_folder)
     subject_folder = os.path.join(data_folder, s)
     if not os.path.exists(subject_folder):
         os.mkdir(subject_folder)

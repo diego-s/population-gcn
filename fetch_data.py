@@ -52,11 +52,12 @@ for s, fname in zip(subject_IDs, Reader.fetch_filenames(subject_IDs, files[0])):
         os.mkdir(subject_folder)
 
     # Get the base filename for each subject
+    print(os.getcwd())
     os.chdir(data_folder)
+    print(os.getcwd())
     base = fname.split(files[0])[0]
 
     # Move each subject file to the subject folder
-    print(os.getcwd())
     for fl in files:
         if not os.path.exists(os.path.join(subject_folder, base + filemapping[fl])):
             shutil.move(base + filemapping[fl], subject_folder)

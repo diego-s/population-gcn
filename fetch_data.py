@@ -53,6 +53,7 @@ for s, fname in zip(subject_IDs, Reader.fetch_filenames(subject_IDs, files[0])):
 
     # Get the base filename for each subject
     print(os.getcwd())
+    print(data_folder)
     os.chdir(data_folder)
     print(os.getcwd())
     base = fname.split(files[0])[0]

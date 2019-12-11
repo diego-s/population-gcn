@@ -30,7 +30,7 @@ from nilearn import connectome
 pipeline = 'cpac'
 
 # Input data variables
-root_folder = 'data/'
+root_folder = os.path.join(os.getcwd(), 'data')
 data_folder = os.path.join(root_folder, 'ABIDE_pcp/cpac/filt_noglobal')
 phenotype = os.path.join(root_folder, 'ABIDE_pcp/Phenotypic_V1_0b_preprocessed1.csv')
 
@@ -64,7 +64,6 @@ def fetch_filenames(subject_IDs, file_type):
         except IndexError:
             # Return N/A if subject ID is not found
             filenames.append('N/A')
-        os.chdir(original_directory)
 
     return filenames
 

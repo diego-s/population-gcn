@@ -24,7 +24,7 @@ pipeline = 'cpac'
 
 # Input data variables
 num_subjects = 871  # Number of subjects
-root_folder = 'data/'
+root_folder = os.path.join(os.getcwd(), 'data')
 data_folder = os.path.join(root_folder, 'ABIDE_pcp/cpac/filt_noglobal')
 
 # Files to fetch
@@ -52,18 +52,12 @@ for s, fname in zip(subject_IDs, Reader.fetch_filenames(subject_IDs, files[0])):
         os.mkdir(subject_folder)
 
     # Get the base filename for each subject
-    print(os.getcwd())
-    print(data_folder)
-    os.chdir(data_folder)
-    print(os.getcwd())
     base = fname.split(files[0])[0]
 
     # Move each subject file to the subject folder
     for fl in files:
         if not os.path.exists(os.path.join(subject_folder, base + filemapping[fl])):
             shutil.move(base + filemapping[fl], subject_folder)
-
-    os.chdir(original_directory)
 
 time_series = Reader.get_timeseries(subject_IDs, 'ho')
 

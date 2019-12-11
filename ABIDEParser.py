@@ -56,6 +56,7 @@ def fetch_filenames(subject_IDs, file_type):
     filenames = []
 
     # Fill list with requested file paths
+    original_directory = os.getcwd()
     for i in range(len(subject_IDs)):
         os.chdir(data_folder)  # os.path.join(data_folder, subject_IDs[i]))
         try:
@@ -63,6 +64,7 @@ def fetch_filenames(subject_IDs, file_type):
         except IndexError:
             # Return N/A if subject ID is not found
             filenames.append('N/A')
+        os.chdir(original_directory)
 
     return filenames
 

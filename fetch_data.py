@@ -45,6 +45,7 @@ subject_IDs = Reader.get_ids(num_subjects)
 subject_IDs = subject_IDs.tolist()
 
 # Create a folder for each subject
+original_directory = os.getcwd()
 for s, fname in zip(subject_IDs, Reader.fetch_filenames(subject_IDs, files[0])):
     os.chdir(data_folder)
     subject_folder = os.path.join(data_folder, s)
@@ -58,6 +59,8 @@ for s, fname in zip(subject_IDs, Reader.fetch_filenames(subject_IDs, files[0])):
     for fl in files:
         if not os.path.exists(os.path.join(subject_folder, base + filemapping[fl])):
             shutil.move(base + filemapping[fl], subject_folder)
+
+    os.chdir(original_directory)
 
 time_series = Reader.get_timeseries(subject_IDs, 'ho')
 

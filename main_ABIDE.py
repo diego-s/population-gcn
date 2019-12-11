@@ -218,7 +218,7 @@ def main():
 
     if args.save == 1:
         result_name = 'ABIDE_classification.mat'
-        sio.savemat('/vol/medic02/users/sparisot/python/graphCNN/results/' + result_name + '.mat',
+        sio.savemat(os.path.join(os.getcwd(), "results", result_name + '.mat'),
                     {'lin': scores_lin, 'lin_auc': scores_auc_lin,
                      'acc': scores_acc, 'auc': scores_auc, 'folds': fold_size})
 

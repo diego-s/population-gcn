@@ -28,6 +28,7 @@ import scipy.io as sio
 
 import ABIDEParser as Reader
 import train_GCN as Train
+import os
 
 
 # Prepares the training/test data for each cross validation fold and trains the GCN
